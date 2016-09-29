@@ -22,8 +22,7 @@ struct element
 };
 
 struct stack_t *stack_new();
-void element_free(struct stack_t *);
-struct stack_t *element_new(void* );
+struct stack_t *element_new(void *);
 void stack_push(struct stack_t *, void *);
 void *stack_pop(struct stack_t *);
 void stack_duplicate(struct stack_t *);

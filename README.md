@@ -1,13 +1,13 @@
 # A simple stack library
 
 A simple implementation of a stack library. It uses [Unity](http://www.throwtheswitch.org/unity)
-for unit testing. The stack uses void pointers to support generic data types.
+for unit testing. The stack uses void pointers to support all data types.
 
 ## Functionality
 
 * [x] Create a new stack
-* [ ] Push an item on the stack
-* [ ] Pop an item from the stack
+* [x] Push an item on the stack
+* [x] Pop an item from the stack
 * [ ] Duplicate the head of the stack
 * [ ] Peek at the head of the stack
 * [ ] Get the size of the stack

@@ -59,19 +59,8 @@ struct stack_t *stack_new()
 }
 
 /*
- * Free an element in the stack.
- *
- * Only used when the stack gets popped.
+ * Create new element for the stack with initialized values.
  */
-void element_free(struct stack_t *stack)
-{
-    assert(stack != NULL);
-    assert(stack->head != NULL);
-    struct element *new_head = stack->head->link;
-    free(stack->head);
-    stack->head = new_head;
-}
-
 struct element *element_new(void* data)
 {
     struct element *elem = malloc(sizeof(struct element));
@@ -80,9 +69,6 @@ struct element *element_new(void* data)
     return elem;
 }
 
-/*
- * Push an item on the stack.
- */
 void stack_push(struct stack_t *stack, void *data)
 {
     assert(stack != NULL);
@@ -91,4 +77,54 @@ void stack_push(struct stack_t *stack, void *data)
     elem->link = stack->head;
     stack->head = elem;
     stack->size++;
+}
+
+void *stack_pop(struct stack_t *stack)
+{
+    assert(stack != NULL);
+    assert(stack->head != NULL);
+
+    void * data = stack->head->data;
+
+    struct element *pelem = stack->head->link;
+    free(stack->head);
+    stack->head = pelem;
+    stack->size--;
+    return data;
+}
+
+// TODO: Write test to confirm this is working
+void stack_duplicate(struct stack_t *stack)
+{
+    assert(stack != NULL);
+    struct element *duplicate = element_new(stack->head->data);
+    duplicate->link = stack->head;
+    stack->head = duplicate;
+    stack->size++;
+}
+
+// TODO: Write test to confirm this is working
+void *stack_peek(struct stack_t *stack) {
+    assert(stack != NULL);
+    return stack->head->data;
+}
+
+// TODO: Write test to confirm this is working
+int stack_size(struct stack_t *stack)
+{
+    assert(stack != NULL);
+    return stack->size;
+}
+
+void stack_free(struct stack_t *stack)
+{
+    assert(stack != NULL);
+
+    struct element *elem;
+    while (stack->head != NULL) {
+        elem = stack->head;
+        stack->head = elem->link;
+        free(elem);
+        stack->size--;
+    }
 }
