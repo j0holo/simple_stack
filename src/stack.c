@@ -93,7 +93,6 @@ void *stack_pop(struct stack_t *stack)
     return data;
 }
 
-// TODO: Write test to confirm this is working
 void stack_duplicate(struct stack_t *stack)
 {
     assert(stack != NULL);
@@ -103,13 +102,11 @@ void stack_duplicate(struct stack_t *stack)
     stack->size++;
 }
 
-// TODO: Write test to confirm this is working
 void *stack_peek(struct stack_t *stack) {
     assert(stack != NULL);
     return stack->head->data;
 }
 
-// TODO: Write test to confirm this is working
 int stack_size(struct stack_t *stack)
 {
     assert(stack != NULL);
