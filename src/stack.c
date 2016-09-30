@@ -1,19 +1,7 @@
 /* 
  * The implementation of the stack library.
  *
- * Functionality:
- * - Create a new stack
- * - free an element
- * - Push (add)
- * - Pop  (remove)
- * - duplicate
- * - peek
- * - swap the to top most items
- * - stack size
- * - free the whole stack with all elements
- *
- * This stack implementation is void pointer based. This gives the user the
- * freedom to use different datatypes with the same library and implementation.
+ * This stack implementation is void pointer based.
  */
 
  #include <stdlib.h>
@@ -93,6 +81,10 @@ void *stack_pop(struct stack_t *stack)
     return data;
 }
 
+/*
+ * Add a new element on the stack that is a duplicate
+ * of the head of the stack.
+ */
 void stack_duplicate(struct stack_t *stack)
 {
     assert(stack != NULL);
@@ -102,17 +94,29 @@ void stack_duplicate(struct stack_t *stack)
     stack->size++;
 }
 
+/*
+ * Get the data of the element on top of the stack
+ * without removing it.
+ */
 void *stack_peek(struct stack_t *stack) {
     assert(stack != NULL);
     return stack->head->data;
 }
 
+/*
+ * Get the number of elements on the stack.
+ */
 int stack_size(struct stack_t *stack)
 {
     assert(stack != NULL);
     return stack->size;
 }
 
+/*
+ * Free all elements on the stack.
+ *
+ * This will not free the stack pointer that holds the elements.
+ */
 void stack_free(struct stack_t *stack)
 {
     assert(stack != NULL);
