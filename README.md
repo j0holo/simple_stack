@@ -8,9 +8,9 @@ for unit testing. The stack uses void pointers to support all data types.
 * [x] Create a new stack
 * [x] Push an item on the stack
 * [x] Pop an item from the stack
-* [ ] Duplicate the head of the stack
-* [ ] Peek at the head of the stack
-* [ ] Get the size of the stack
+* [x] Duplicate the head of the stack
+* [x] Peek at the head of the stack
+* [x] Get the size of the stack
 
 Of course, every function is unit tested when committed to the master branch.
 
@@ -27,6 +27,8 @@ int main(int argc, char *arv[])
     free(stack);
 }
 ```
+
+More documentation will follow soon.
 
 ## License
 
