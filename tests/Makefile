@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -std=c99 -Wall -Werror -pedantic -g
+CFLAGS = -std=c99 -Wall -Werror -Wpedantic -g
 
 .PHONY: clean
 .PHONY: test
@@ -16,7 +16,7 @@ unity.o: stack.o
 	$(CC) $(CFLAGS) -c unity.c
 
 stack.o: ../src/stack.c
-	$(CC) $(CFLAGS) -c ../src/stack.c
+	$(CC) $(CFLAGS) -c ../src/stack.h ../src/stack.c
 
 clean:
 	rm -f stack stack.o test_stack.o unity.o

@@ -6,10 +6,11 @@
 #include <stdio.h>
 #include "../src/stack.h"
 #include "unity.h"
+#include "test_stack.h"
 
 void test_create_stack_with_initial_values(void)
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     TEST_ASSERT_EQUAL_INT(0, stack->size);
     TEST_ASSERT_EQUAL_PTR(NULL, stack->head);
     free(stack);
@@ -17,7 +18,7 @@ void test_create_stack_with_initial_values(void)
 
 void test_push_item_on_stack(void)
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     int x = 1;
     stack_push(stack, &x);
     TEST_ASSERT_EQUAL_INT(x, (*(int*) stack->head->data));
@@ -29,8 +30,7 @@ void test_push_item_on_stack(void)
 
 void test_push_two_items_on_stack(void)
 {
-    // TODO: The elements on the stack are not freed.
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     int x = 1;
     stack_push(stack, &x);
     TEST_ASSERT_EQUAL_INT(x, (*(int*) stack->head->data));
@@ -46,7 +46,7 @@ void test_push_two_items_on_stack(void)
 
 void test_pop_item_of_stack(void)
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     int x = 1;
     stack_push(stack, &x);
     TEST_ASSERT_EQUAL_INT(1, stack->size);
@@ -60,7 +60,7 @@ void test_pop_item_of_stack(void)
 void test_pop_two_items_of_stack(void)
 {
     void *data;
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     int x = 1;
     int y = 2;
     stack_push(stack, &x);
@@ -77,7 +77,7 @@ void test_pop_two_items_of_stack(void)
 
 void test_duplicate(void)
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     int x = 3;
     stack_push(stack, &x);
     stack_duplicate(stack);
@@ -91,7 +91,7 @@ void test_duplicate(void)
 
 void test_peek(void)
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     int x = 10;
     stack_push(stack, &x);
     TEST_ASSERT_EQUAL_INT(x, (*(int *) stack_peek(stack)));
@@ -101,7 +101,7 @@ void test_peek(void)
 
 void test_stack_size(void)
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     stack->size = 10;
     TEST_ASSERT_EQUAL_INT(10, stack->size);
     free(stack);
@@ -110,7 +110,7 @@ void test_stack_size(void)
 void test_free_stack(void)
 {
     int x = 3;
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     stack_push(stack, &x);
     stack_push(stack, &x);
     stack_push(stack, &x);

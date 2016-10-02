@@ -1,33 +1,18 @@
-#ifndef INCLUDE_STACK
-#define INCLUDE_STACK
+#ifndef S_STACK_H
+#define S_STACK_H
 
 /*
  * The root of the stack.
- *
- * Holds the head element and contains the size of the stack.
  */
-struct stack_t
-{
-    int size;
-    struct element *head;
-};
+struct s_stack;
+//struct s_stack *;
 
-/*
- * The stack element that hold the data and the node below it.
- */
-struct element
-{
-    void *data;
-    struct element *link;
-};
-
-struct stack_t *stack_new();
-struct stack_t *element_new(void *);
-void stack_push(struct stack_t *, void *);
-void *stack_pop(struct stack_t *);
-void stack_duplicate(struct stack_t *);
-void *stack_peek(struct stack_t *);
-int stack_size(struct stack_t *);
-void stack_free(struct stack_t *);
+struct s_stack *stack_alloc();
+void stack_push(struct s_stack *, void *);
+void *stack_pop(struct s_stack *);
+void stack_duplicate(struct s_stack *);
+void *stack_peek(struct s_stack *);
+int stack_size(struct s_stack *);
+void stack_free(struct s_stack *);
 
 #endif

@@ -23,7 +23,7 @@ Create a new stack:
   
 int main(int argc, char *arv[])
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     free(stack);
 }
 ```
@@ -36,7 +36,7 @@ Push and pop data on and off the stack:
   
 int main(int argc, char *arv[])
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     float some_data = 12.44445;
     // push data on the stack
     stack_push(stack, &some_data);
@@ -52,7 +52,7 @@ Create a duplicate of the head:
   
 int main(int argc, char *arv[])
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     int data = 10;
     stack_push(stack, &data);
     stack_duplicate(stack);
@@ -69,7 +69,7 @@ Take a peek at the stack:
   
 int main(int argc, char *arv[])
 {
-    struct stack_t *stack = stack_new();
+    struct s_stack *stack = stack_alloc();
     char data = 'A';
     stack_push(stack, &data);
     printf("The stack contains: %c\n", (* (char *) stack_peek(stack)));
