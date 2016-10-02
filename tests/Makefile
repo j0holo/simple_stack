@@ -7,7 +7,7 @@ CFLAGS = -std=c99 -Wall -Werror -Wpedantic -g
 all: clean build test
 
 build: test_stack.o
-	$(CC) stack.o test_stack.o unity.o -o test_stack
+	$(CC) $(CFLAGS) stack.o test_stack.o unity.o -o test_stack
 
 test_stack.o: unity.o
 	$(CC) $(CFLAGS) -c test_stack.c
@@ -24,4 +24,4 @@ clean:
 test:
 	./test_stack
 
-// TODO: Restructure folders to inlcude bin/
+// TODO(j0holo): Restructure folders to inlcude bin/
