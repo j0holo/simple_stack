@@ -1,9 +1,6 @@
 #ifndef S_STACK_H
 #define S_STACK_H
 
-/*
- * The root of the stack.
- */
 struct s_stack;
 
 struct s_stack *stack_alloc(unsigned long max_stack_size);
