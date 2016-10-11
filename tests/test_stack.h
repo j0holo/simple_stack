@@ -1,3 +1,6 @@
+/*
+ * The full defenition of both structs for the unit tests.
+ */
 #ifndef STACK_TEST_H
 #define STACK_TEST_H
 

@@ -1,7 +1,8 @@
 CC = clang
-CFLAGS = -std=c99 -Wall -Werror -Wpedantic -g
-USANITIZE = -fsanitize=undefined
-MSANITIZE = -fsanitize=address -fno-omit-frame-pointer
+CFLAGS = -std=c99 -Wall -Wextra -Wconversion -Werror -Wpedantic -g3
+USANITIZE = -fsanitize=undefined -fstack-protector \
+			-fno-sanitize-recover=undefined,integer -fsanitize=address \
+			-fno-omit-frame-pointer
 
 .PHONY: clean
 .PHONY: test

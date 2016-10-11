@@ -3,3 +3,4 @@
 test_stack
 *.h.gch
 .project
+*.plist
